@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+$primary-color: #006ce4;
+$background-color: #272727;
+$font-color: #C0C0B6;
+
+.product {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+
+  &__item {
+    background-color: $background-color;
+    border-radius: 5%;
+    display: flex;
+    border: 1px solid $background-color;
+    width: 360px;
+    height: 600px;
+  }
+
+  &__box {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__slider {
+    width: 100%;
+    /* Chiều rộng slider */
+    overflow: hidden;
+    /* Ẩn nội dung tràn */
+    position: relative;
+
+    /* Để định vị các phần tử như nút điều hướng */
+    &--image {
+      overflow: hidden;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      border-radius: 5%;
+      transition: 0.5s;
+
+      img {
+        transition: 0.5s;
+        width: 100%;
+        object-fit: cover;
+        color: $primary-color;
+        border-radius: 5%;
+        height: 300px;
+        flex-shrink: 0;
+
+      }
+
+    }
+  }
+
+  &__content {
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+  }
+
+  &__title {
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  &__types {
+    align-items: center;
+    display: flex;
+  }
+
+  &__adress {
+    cursor: pointer;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    padding-top: 8px;
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 0.8rem;
+    color: $font-color;
+
+  }
+
+  &__name {
+    cursor: pointer;
+    display: inline;
+    padding-top: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: whitesmoke;
+    margin-right: 5px;
+
+  }
+
+  &__name:hover {
+    color: #006ce4;
+  }
+
+  &__category {
+    cursor: pointer;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    padding-top: 8px;
+    padding-right: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1rem;
+    color: whitesmoke;
+    font-family: 'Playfair Display', serif;
+  }
+
+  &__description {
+    cursor: auto;
+    color: $font-color;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__button {
+    &--hobby {
+      position: absolute;
+      top: 13px;
+      right: 43px;
+      cursor: pointer;
+    }
+
+    &--prev {
+      position: absolute;
+      top: 50%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transform: translateY(-50%);
+      z-index: 1;
+      transition: 0.5s ease;
+
+    }
+
+    &--next {
+
+      position: absolute;
+      top: 50%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      right: 0px;
+      transform: translateY(-50%);
+      z-index: 1;
+      transition: 0.5s ease;
+    }
+
+    flex-grow: 1;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__aria {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.349) 0%,
+        rgba(0, 0, 0, 0.424) 13.81%,
+        rgba(0, 0, 0, 0.494) 28.27%,
+        rgba(0, 0, 0, 0.561) 42.12%,
+        rgba(0, 0, 0, 0.616) 56.28%,
+        rgba(0, 0, 0, 0.663) 70.13%,
+        rgba(0, 0, 0, 0.69) 84.88%,
+        rgba(0, 0, 0, 0.702) 100%);
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.012) 13.54%,
+        rgba(0, 0, 0, 0.039) 27.6%,
+        rgba(0, 0, 0, 0.082) 42.19%,
+        rgba(0, 0, 0, 0.137) 56.77%,
+        rgba(0, 0, 0, 0.204) 71.35%,
+        rgba(0, 0, 0, 0.275) 85.94%,
+        rgba(0, 0, 0, 0.349) 100%);
+  }
+
+  &__dots {
+    margin-top: 260px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--dot {
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: #ccc; // Màu mặc định của dot
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+    }
+
+    &--dot.active {
+      background-color: #f2f2f2; // Màu khi dot được chọn
+    }
+  }
+}
+
+.DetailProducts {
+
+  box-sizing: border-box;
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 20px;
+
+  hr {
+    font-size: 70px;
+    width: 100%;
+    height: 1px;
+
+  }
+
+  &__Anchor {
+    background-color: #121212;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  }
+
+  &__Overview {
+    height: 100%;
+
+    &--title {
+      padding: 0;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 700;
+      margin: 4px;
+      color: white;
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        padding-left: 7px;
+        line-height: calc(0.0625rem * 20);
+        color: #f2f2f2;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+    }
+
+    &--hobby,
+    &--share {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    &--detail {
+      p {
+        color: #f2f2f2;
+        font-size: 14px;
+        line-height: calc(0.0625rem * 20);
+        font-weight: 600;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      span {
+        color: #ccc;
+        font-size: 12px;
+        line-height: calc(0.0625rem * 18);
+        font-weight: 400;
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+    }
+
+    &--table {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+
+        p {
+          margin-top: 0px;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.minibox {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  border: 1px solid #272727;
+
+  &__button {
+    display: grid;
+  }
+
+  &__section {
+    padding: 16px;
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: calc(0.0625rem * 24);
+    margin-bottom: 5px;
+  }
+
+  h4 {
+    margin: 0;
+    padding: 0 0 5px;
+    font-size: 14px;
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif
+  }
+
+  &__highlight {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-top: 0;
+      padding-left: 5px;
+      font-size: 13px;
+      text-align: left;
+    }
+  }
+
+  &__comment {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 62px;
+    border: 1px solid #C0C0B6;
+    border-radius: 8px 8px 0 0;
+    padding: 12px;
+
+    &--title {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        padding-right: 10px;
+      }
+    }
+
+    &--rate {
+      background-color: #003b95;
+      color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: baseline;
+      border-radius: 6px;
+      height: 40px;
+      width: 40px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 600;
+
+    }
+  }
+
+  &__slider {
+    padding: 0 16px;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding-block-start: 0;
+      padding-block-end: 0;
+      justify-content: space-between;
+
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #C0C0B6;
+    border-radius: 0 0 8px 8px;
+    margin-top: 5px;
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      padding-right: 10px;
+    }
+
+
+    &--ratenv {
+      background-color: white;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: baseline;
+      border-radius: 6.4px 6.4px 6.4px 0;
+      border: 1px solid #121212;
+      height: 40px;
+      width: 40px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 600;
+
+    }
+  }
+}
+
+.distance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+
+  color: rgb(229, 220, 220);
+
+  li {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .location {
+      flex: 1;
+      font-weight: bold;
+    }
+
+    .distance {
+      color: rgb(229, 220, 220);
+      font-weight: normal;
+      margin-left: 20px;
+    }
+  }
+}
+
+.distance-checklist {
+
+  font-family: Arial, sans-serif;
+  list-style: none;
+  padding: 0;
+  color: rgb(229, 220, 220);
+
+  li {
+    padding: 5px;
+
+    &:before {
+      content: "✓";
+      color: white;
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+  }
+}
+
+.hotel {
+  width: 80%;
+
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  &__policy {
+    border-bottom: 1px solid #ddd;
+    min-width: 250px;
+
+    &--title {
+      font-size: 16px;
+      font-weight: 700;
+      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: calc(0.0625rem * 20);
+      margin-left: 10px;
+
+
+    }
+
+    &--box {
+      border-radius: 3px;
+      border: 1px solid #e7e7e7;
+      margin: 16px 0;
+      max-width: 640px;
+    }
+
+    &--content {
+      border-top: 1px solid #e7e7e7;
+      padding: 8px;
+    }
+
+    &--desc {
+      font-size: 14px;
+      line-height: calc(0.0625rem * 20);
+      font-weight: 600;
+
+      padding: 0 0 0 4px;
+
+    }
+
+    &--picture {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      picture {
+        width: 46px;
+        background-position: -309px 0;
+        background: url(//cf.bstatic.com/static/img/experiments/cc_icons/3ca3d63….png) no-repeat;
+        height: 28px;
+        img{
+          object-fit: cover !important;
+        }
+      }
+    }
+  }
+}

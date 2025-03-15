@@ -1,0 +1,26 @@
+.notify{
+  width: 350px;
+  min-width: 10rem;
+  box-shadow: 0 2px 8px #00000026;
+
+  position: relative;
+    margin: 0;
+    padding: 4px 0;
+    text-align: left;
+    list-style-type: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 2px;
+    outline: 0;
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    &__header{
+      align-items: center;
+      
+      display: flex;
+      justify-content: space-between;
+      padding-left: 25px !important;
+      padding-right: 25px !important;
+      padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    }
+}
