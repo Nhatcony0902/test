@@ -7,7 +7,6 @@ import { FaPersonDrowning, FaWifi, FaSpa, FaHotel } from "react-icons/fa6";
 import { MdAirportShuttle, MdFitnessCenter, MdOutlineRestaurant } from "react-icons/md";
 import { TbSmokingNo } from "react-icons/tb";
 import { CiParking1 } from "react-icons/ci";
-import { redirectToPage } from "../../helper";
 function Overview(props) {
   const { item } = props;
   console.log(item);
@@ -26,6 +25,11 @@ function Overview(props) {
       content: 'Success copied',
     });
   };
+  function smoothScroll(){
+    document.querySelector('#Info-prices').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
   const content = (
     <div>
       <span >
@@ -552,7 +556,7 @@ function Overview(props) {
                       <div className="minibox__button">
                       <Button type="primary"  style={{marginBottom:10,
                         marginTop:14
-                      }} onClick={() => redirectToPage()}>Đặt ngay</Button>
+                      }} onClick={() => smoothScroll()}>Đặt ngay</Button>
                       
                       <Button icon={<HeartFilled/>} type="primary"  >Lưu chỗ nghỉ</Button>
                       </div>

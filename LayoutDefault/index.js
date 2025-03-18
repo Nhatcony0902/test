@@ -36,11 +36,11 @@ function LayoutDefault() {
           },
         }}
       >
-        <Layout className="layout-default">
+        <Layout className="layout-default" >
           <Header className="header" style={{
             position: 'sticky',
             top: 0,
-            zIndex: 1,
+            zIndex: 100,
             width: '100%',
             display: 'flex',
             alignItems: 'center',
@@ -66,18 +66,17 @@ function LayoutDefault() {
             <Sider className="sider" collapsed={callapsed} theme="light" width={280} style={siderStyle}>
               <MenuSider />
             </Sider>
-
-            <Layout style={{ marginLeft: callapsed ? 80 : 280, transition: 'margin-left 0.2s ease' }}>
+        
+            <Layout style={{ marginLeft: callapsed ? 80 : 280, transition: 'margin-left 0.2s ease',  }}>
               <Content style={{
                 margin: '24px 16px 0',
-                overflow: 'initial',
-               
-              }}>
-                <Outlet></Outlet>
                 
+              }}>
+              
               </Content>
+              <Outlet></Outlet>
             </Layout>
-          
+
           </Layout>
           <Footer></Footer>
         </Layout>

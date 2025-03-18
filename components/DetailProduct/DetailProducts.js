@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Anchor, ConfigProvider } from 'antd';
+import { Anchor, Button, ConfigProvider,Row,Col } from 'antd';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getdetailProducts } from '../../services/productsSevice';
@@ -15,6 +15,40 @@ function DetailProducts() {
   const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState([]);
+  function smoothScroll1(){
+    document.querySelector('#Overview').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+function smoothScroll2(){
+  document.querySelector('#Info-prices').scrollIntoView({
+      behavior: 'smooth'
+  });
+}
+
+function smoothScroll4(){
+  document.querySelector('#Facilities').scrollIntoView({
+      behavior: 'smooth'
+  });
+}
+
+function smoothScroll3(){
+  document.querySelector('#Guestreview').scrollIntoView({
+      behavior: 'smooth'
+  });
+}
+
+function smoothScroll5(){
+  document.querySelector('#Service').scrollIntoView({
+      behavior: 'smooth'
+  });
+}
+
+function smoothScroll6(){
+  document.querySelector('#Houserules').scrollIntoView({
+      behavior: 'smooth'
+  });
+}
 
 
   useEffect(() => {
@@ -36,79 +70,61 @@ function DetailProducts() {
   }, [id]);
   return (
     <>
-      <ConfigProvider
-        theme={{
-          components: {
-            Anchor: {
-              colorText: "white",
-              lineHeight: 5,
-              linkPaddingInlineStart: 95,
-              fontSize: 17,
-              colorSplit:"#F2323"
-            },
-          },
-        }}
-      >
-     <div >
-     <Anchor
-          
-          offsetTop={74}
-      
-          className='DetailProducts__Anchor'
-          direction="horizontal"
-          items={[
-            {
-              key: 'Overview',
-              href: '#Overview',
-              title: 'Overview',
-            },
-            {
-              key: 'Info&prices',
-              href: '#Info&prices',
-              title: 'Info & prices',
-            },
-            {
-              key: 'Guest review',
-              href: '#Guest review',
-              title: 'Guest review'
-            },
-            {
-              key: 'Facilities',
-              href: '#Facilities',
-              title: 'Facilities',
-            },
-            {
-              key: 'Service',
-              href: '#Service',
-              title: 'Service'
-            },
-            {
-              key: 'HouseRules',
-              href: '#HouseRules',
-              title: 'HouseRules'
-            },
-            
-          ]}
-          style={{
-            paddingLeft: 50,
-            height: 70,
-            display: "flex",
-            alignItems: "end",
-            boxShadow: "border-box",
-          }}
-        />  
-     </div>
-      
-       
        <div className="DetailProducts">
+        <div className="DetailProducts__link">
+            <Row gutter={[10,20]}>
+               <Col span={4}>
+              <Button onClick={()=>smoothScroll1()}  type="text" style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+                
+              }}>Tổng quan</Button>
+              </Col>
+               <Col span={4}>
+              <Button type="text" onClick={()=>smoothScroll2()} style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+                
+              }}>Thông tin & Giá</Button>
+              </Col>
+               <Col span={4}>
+              <Button type="text" onClick={()=>smoothScroll3()} style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+             
+              }}>Đánh giá</Button>
+              </Col>
+               <Col span={4}>
+              <Button type="text" onClick={()=>smoothScroll4()} style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+     
+              }}>Dịch vụ</Button>
+              </Col>
+               <Col span={4}>
+              <Button type="text" onClick={()=>smoothScroll5()} style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+         
+              }}>Tiện nghị</Button>
+              </Col>
+               <Col span={4}>
+              <Button type="text" onClick={()=>smoothScroll6()} style={{color:"white",
+                fontSize:16,
+                fontWeight:500,
+        
+              }}>Quy tắc chung</Button>
+              </Col>
+            </Row>
+        </div>
        <div id="Overview">
           <Overview item={product}/>
         </div>
         <hr></hr>
-        <div id="Info&prices">
+        <div id="Info-prices">
         <InfoPrice item={product} />
         </div>
-        <div id="Guest review">
+        <div id="Guestreview">
           <GuestReview item={product} />
         </div>
         <div id="Facilities">
@@ -117,12 +133,11 @@ function DetailProducts() {
         <div id="Service">
         <Service item={product} />
         </div>
-        <div id="HouseRules">
+        <div id="Houserules">
         <HouseRules item={product}/>
         </div>
        </div>
        
-      </ConfigProvider>
     </>
   );
 }

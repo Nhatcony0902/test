@@ -213,13 +213,15 @@ $font-color: #C0C0B6;
 
 .DetailProducts {
 
-  box-sizing: border-box;
-  min-height: 0;
-  height: 100%;
+
+
   box-sizing: border-box;
   padding: 12px;
   margin-top: 20px;
-
+  margin-left: 20px;
+  &__link{
+    margin-bottom: 40px;
+  }
   hr {
     font-size: 70px;
     width: 100%;

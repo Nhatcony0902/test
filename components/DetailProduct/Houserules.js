@@ -16,6 +16,11 @@ import { redirectToPage } from "../../helper";
 function HouseRules(props) {
   const { item } = props;
   console.log(item);
+  function smoothScroll(){
+    document.querySelector('#Info-prices').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
   return (
     <>
       <div style={{ paddingTop: 40 }} >
@@ -28,7 +33,7 @@ function HouseRules(props) {
                     <h2 className="DetailProducts__Overview--title">Quy tắc chung</h2>
                   </Col>
                   <Col span={6}>
-                    <Button type="primary" size="large" onClick={() => redirectToPage()}>Xem phòng trống</Button>
+                    <Button type="primary" size="large" onClick={() => smoothScroll()}>Xem phòng trống</Button>
                   </Col>
                   <Col span={8}>
                     <Tag color="cyan">{item.name}!</Tag>

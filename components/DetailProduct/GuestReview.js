@@ -3,6 +3,11 @@ import { redirectToPage } from "../../helper";
 function GuestReview(props) {
   const { item } = props;
   console.log(item);
+  function smoothScroll(){
+    document.querySelector('#Info-prices').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
   return (
     <>
       <div >
@@ -15,7 +20,7 @@ function GuestReview(props) {
                     <h2 className="DetailProducts__Overview--title">Đánh giá của khách</h2>
                   </Col>
                   <Col span={6}>
-                    <Button type="primary" size="large" onClick={() => redirectToPage()}>Xem phòng trống</Button>
+                    <Button type="primary" size="large" onClick={() => smoothScroll()}>Xem phòng trống</Button>
                   </Col>
                 </Row>
               </div>
