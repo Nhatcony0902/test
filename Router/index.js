@@ -4,6 +4,7 @@ import LayoutDefault from "../LayoutDefault";
 import CMR from "../Pages/CMR";
 import Default from "../Pages/Default";
 import Ecommer from "../Pages/Ecommer";
+import Login from "../Pages/Signin";
 
 
 export const routes =[
@@ -37,6 +38,10 @@ export const routes =[
           {
             path:"/DetailProducts/:id",
             element:<DetailProducts/>
+          },
+          {
+            path:"Login",
+            element:<Login/>
           }
         ]
     }

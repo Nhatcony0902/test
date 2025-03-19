@@ -1,4 +1,4 @@
-import { Layout, ConfigProvider } from "antd";
+import { Layout, ConfigProvider, Button, Row, Col } from "antd";
 import logo from "../../src/images/logo-fold-white.png"
 import logoFold from "../../src/images/logo-white.png"
 import "./layoutDefault.scss";
@@ -6,7 +6,7 @@ import { SearchOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import Notify from "../../src/components/Notify"
 import MenuSider from "../../src/components/Menu";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 function LayoutDefault() {
   const [callapsed, setCollapsed] = useState(false);
@@ -44,7 +44,7 @@ function LayoutDefault() {
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-          }} hea>
+          }}>
             <div className={"header__logo " + (callapsed && "header__logo--callapsed")}>
               <img src={callapsed ? logo : logoFold} alt="logo"></img>
             </div>
@@ -61,18 +61,27 @@ function LayoutDefault() {
                 <Notify />
               </div>
             </div>
+            <div className="header__account">
+              <Row gutter={[20, 10]}>
+                <Col span={12}>
+                  <NavLink to="/Login"><Button type="primary" >Đăng nhập</Button></NavLink>
+                </Col>
+                <Col span={12}><Button type="primary" >Đăng kí</Button></Col>
+              </Row>
+
+            </div>
           </Header>
           <Layout>
             <Sider className="sider" collapsed={callapsed} theme="light" width={280} style={siderStyle}>
               <MenuSider />
             </Sider>
-        
-            <Layout style={{ marginLeft: callapsed ? 80 : 280, transition: 'margin-left 0.2s ease',  }}>
+
+            <Layout style={{ marginLeft: callapsed ? 80 : 280, transition: 'margin-left 0.2s ease', }}>
               <Content style={{
                 margin: '24px 16px 0',
-                
+
               }}>
-              
+
               </Content>
               <Outlet></Outlet>
             </Layout>
