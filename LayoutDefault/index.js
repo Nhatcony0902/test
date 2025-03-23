@@ -6,7 +6,9 @@ import { SearchOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import Notify from "../../src/components/Notify"
 import MenuSider from "../../src/components/Menu";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet,useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 const { Header, Content, Footer, Sider } = Layout;
 function LayoutDefault() {
   const [callapsed, setCollapsed] = useState(false);
@@ -21,7 +23,9 @@ function LayoutDefault() {
     scrollbarGutter: 'stable',
     zIndex: 1000,
   };
-
+  const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const token = useSelector((state) => state.auth.token);
 
   return (
 
