@@ -1,26 +1,45 @@
-import { useRef, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {  login} from '../../store/authSlice';
-import { useNavigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../../actions/authActions';
 import "./style.scss";
+
 function Login() {
-    const unameRef = useRef(null);
-    const passRef = useRef(null);
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
     const [message, setMessage] = useState('');
     const [msgColor, setMsgColor] = useState('');
     const [btnDisabled, setBtnDisabled] = useState(true);
     const [btnPosition, setBtnPosition] = useState('no-shift');
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+   
+    const { error, isAuthenticated } = useSelector(state => state.auth || {});
+
     useEffect(() => {
         setBtnDisabled(true); // Khởi tạo disabled
-
     }, []);
 
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/'); 
+        }
+    }, [isAuthenticated, navigate]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => {
+            const newFormData = { ...prev, [name]: value };
+            showMsg(newFormData); // Gọi showMsg với dữ liệu mới
+            return newFormData;
+        });
+    };
+
     const shiftButton = () => {
-        // Chỉ di chuyển nút khi nó đang bị vô hiệu hóa
         if (btnDisabled) {
-            showMsg();
             const positions = ['shift-left', 'shift-top', 'shift-right', 'shift-bottom'];
             const currentIndex = positions.indexOf(btnPosition);
             const nextPosition = positions[(currentIndex + 1) % positions.length];
@@ -28,10 +47,8 @@ function Login() {
         }
     };
 
-
-    const showMsg = () => {
-        const isEmpty = unameRef.current?.value === '' || passRef.current?.value === '';
-
+    const showMsg = (data = formData) => {
+        const isEmpty = data.email === '' || data.password === '';
         if (isEmpty) {
             setBtnDisabled(true);
             setMsgColor('rgb(218, 49, 49)');
@@ -40,34 +57,44 @@ function Login() {
             setMessage('Great! Now you can proceed');
             setMsgColor('#92ff92');
             setBtnDisabled(false);
-            setBtnPosition('no-shift'); // Đặt lại vị trí bình thường
+            setBtnPosition('no-shift');
         }
     };
 
-    //xử lí đăng nhập
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        await dispatch(login({ username, password }));
+        dispatch(login(formData));
         navigate("/");
     };
-
 
     return (
         <div className="main-container centered-flex">
             <div className="form-container">
                 <div className="icon fa fa-user"></div>
-                <form className="centered-flex" onInput={showMsg} onSubmit={handleSubmit}>
+                <form className="centered-flex" onSubmit={handleSubmit}>
                     <div className="title">LOGIN</div>
                     <div className="msg" style={{ color: msgColor }}>{message}</div>
+                    {error && <div style={{ color: 'red' }}>{error}</div>}
                     <div className="field">
-                        <input type="text" placeholder="Username" id="uname" ref={unameRef} value={username} onChange={(e) => setUsername(e.target.value)}/>
+                        <input 
+                            type="text" 
+                            placeholder="Username" 
+                            id="uname" 
+                            name="email" // Thêm name để khớp với formData
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
                         <span className="fa fa-user"></span>
                     </div>
                     <div className="field">
-                        <input type="password" placeholder="Password" id="pass" ref={passRef} value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input 
+                            type="password" 
+                            placeholder="Password" 
+                            id="pass" 
+                            name="password" // Thêm name để khớp với formData
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
                         <span className="fa fa-lock"></span>
                     </div>
                     <div className="action centered-flex">

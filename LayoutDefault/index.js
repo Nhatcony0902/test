@@ -23,9 +23,6 @@ function LayoutDefault() {
     scrollbarGutter: 'stable',
     zIndex: 1000,
   };
-  const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const token = useSelector((state) => state.auth.token);
 
   return (
 
@@ -70,7 +67,7 @@ function LayoutDefault() {
                 <Col span={12}>
                   <NavLink to="/Login"><Button type="primary" >Đăng nhập</Button></NavLink>
                 </Col>
-                <Col span={12}><Button type="primary" >Đăng kí</Button></Col>
+                <Col span={12}><NavLink to="/Register"><Button type="primary" >Đăng kí</Button></NavLink></Col>
               </Row>
 
             </div>

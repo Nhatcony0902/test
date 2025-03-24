@@ -4,6 +4,7 @@ import LayoutDefault from "../LayoutDefault";
 import CMR from "../Pages/CMR";
 import Default from "../Pages/Default";
 import Ecommer from "../Pages/Ecommer";
+import Register from "../Pages/Register";
 import Login from "../Pages/Signin";
 
 
@@ -42,6 +43,10 @@ export const routes =[
           {
             path:"Login",
             element:<Login/>
+          },
+          {
+            path:"Register",
+            element:<Register/>
           }
         ]
     }
