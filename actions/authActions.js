@@ -36,8 +36,16 @@ export const logout = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
 };
 
+// src/actions/authActions.js
+export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+
 export const register = (userData) => async (dispatch) => {
   try {
+    // Dispatch action để báo hiệu đang xử lý đăng ký
+    dispatch({ type: REGISTER_REQUEST });
+
     const response = await fetch('http://localhost:8081/register', {
       method: 'POST',
       headers: {
@@ -46,27 +54,37 @@ export const register = (userData) => async (dispatch) => {
       body: JSON.stringify(userData),
     });
 
+    // Kiểm tra response.ok trước khi parse JSON
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({})); // Nếu không parse được JSON, trả về object rỗng
+      throw new Error(data.message || data.error || 'Đăng ký thất bại');
+    }
+
+    // Parse JSON nếu response.ok
     const data = await response.json();
     console.log(data);
 
-    if (!response.ok) {
-      throw new Error(data.message || 'Đăng ký thất bại');
+    // Kiểm tra xem data có token và user không
+    if (!data.token || !data.user) {
+      throw new Error('Phản hồi từ server không hợp lệ: Thiếu token hoặc user');
     }
 
-    // Lưu token vào localStorage (nếu backend trả về token sau khi đăng ký)
-    localStorage.setItem('token', data.token);
-
+    // Dispatch action thành0 thành công
     dispatch({
-      type: 'REGISTER_SUCCESS',
+      type: REGISTER_SUCCESS,
       payload: {
         user: data.user,
         token: data.token,
       },
     });
+
+    // Lưu token vào localStorage sau khi dispatch thành công
+    localStorage.setItem('token', data.token);
   } catch (error) {
+    // Dispatch action thất bại
     dispatch({
-      type: 'REGISTER_FAIL',
-      payload: error.message,
+      type: REGISTER_FAIL,
+      payload: error.message || 'Đã có lỗi xảy ra trong quá trình đăng ký',
     });
   }
 };

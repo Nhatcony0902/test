@@ -37,7 +37,7 @@
     color: #a2a2a2;
 }
 
-form {
+.formlogin {
     flex-direction: column;
     padding: 25px 25px 10px;
     height: 440px;
@@ -84,7 +84,7 @@ input:-webkit-autofill {
     -webkit-text-fill-color: #bababa !important;
 }
 
-form input {
+.formlogin input {
     display: block;
     outline: none;
     width: 100%;

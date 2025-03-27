@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../actions/authActions';
-import "./style.scss";
+import "./login.scss";
 
 function Login() {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
     });
     const [message, setMessage] = useState('');
@@ -66,12 +66,12 @@ function Login() {
         dispatch(login(formData));
         navigate("/");
     };
-
+    console.log(formData);
     return (
         <div className="main-container centered-flex">
             <div className="form-container">
                 <div className="icon fa fa-user"></div>
-                <form className="centered-flex" onSubmit={handleSubmit}>
+                <form className="formlogin centered-flex" onSubmit={handleSubmit}>
                     <div className="title">LOGIN</div>
                     <div className="msg" style={{ color: msgColor }}>{message}</div>
                     {error && <div style={{ color: 'red' }}>{error}</div>}
@@ -80,8 +80,8 @@ function Login() {
                             type="text" 
                             placeholder="Username" 
                             id="uname" 
-                            name="email" // Thêm name để khớp với formData
-                            value={formData.email}
+                            name="username" // Thêm name để khớp với formData
+                            value={formData.username}
                             onChange={handleChange}
                         />
                         <span className="fa fa-user"></span>
@@ -118,7 +118,7 @@ function Login() {
                             onTouchStart={shiftButton}
                         />
                     </div>
-                    <div className="signup">Don't have an Account?<a href="#"> Sign up</a></div>
+                    <div className="signup">Don't have an Account?<NavLink to='/Register'> Sign up</NavLink></div>
                 </form>
             </div>
         </div>

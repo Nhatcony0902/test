@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.main-container {
+  min-height: 100vh;
+  min-width: 450px;
+  font-family: 'calibri';
+}
+form-register {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-family: 'Work Sans'; 
+  background-color: #f5f7f9;
+}
+
+a {
+  text-decoration: none;
+  color: #293890;
+}
+.form{
+  display: block;
+}
+.form-wrapper { 
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px #d8d8d8;
+  padding: 30px 15px 15px;
+  border-radius: 15px;
+  width: 450px;
+}
+
+.logo {
+  font-size: 30px;
+  display: block;
+  color: #383838;
+  margin-bottom: 10px;
+}
+
+.form-wrapper .static-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.static-text p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.field-group {
+  margin: 20px 0;
+  position: relative;
+}
+
+.field-group input:focus {
+  outline: none;
+  border: 1px solid #396dd6;
+}
+
+.field-group input {
+    padding: 10px 35px 10px 12px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(215, 215, 215);
+}
+
+.field-group input:focus~.field-icon,
+.field-group input:focus+label {
+  color: #1f47b6;
+}
+
+.field-group input:focus+label,
+.field-group input:not(:placeholder-shown)+label {
+  background-color: white;
+  padding: 0 7px;
+  left: 5px;
+  font-size: 13px;
+  top: 0;
+  font-weight: 500;
+}
+
+.field-group label {
+  position: absolute;
+  transition: top .4s, font-size .4s;
+  left: 12px;
+  font-size: 14px;
+  top: 50%;
+  color: #101010;
+  cursor: text;
+  transform: translateY(-50%);
+}
+
+.field-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[type=checkbox] {
+  vertical-align: middle;
+}
+
+.agree-checkbox {
+  font-size: 14px;
+  color: #262626;
+}
+
+.agree-checkbox label {
+  cursor: pointer;
+}
+
+.signup-form button {
+  width: 100%;
+  background-color: black;
+  line-height: 2.5;
+  color: white;
+  font-family: 'Work Sans';
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  border: none;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgb(63, 63, 63);
+  margin: 30px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  width: 100%;
+  height: .8px;
+  background: linear-gradient(145deg, #101010, transparent);
+}
+
+.separator::before {
+  background: linear-gradient(-145deg, #101010, transparent);
+}
+
+.other-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.other-options a {
+  color: black;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 5px;
+  flex: 1 0 auto;
+  text-align: center;
+}
+
+.other-options .option-icon {
+  margin: 0 2px;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 20px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.bi-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+}
+
+.bi-microsoft {
+  background: conic-gradient(from -90deg, #f44336 90deg, #4caf50 90deg 180deg, #2196f3 180deg 270deg, #ffc107 270deg) 50% 55%/100% 150% no-repeat;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+}

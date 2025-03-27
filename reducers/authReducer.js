@@ -1,9 +1,9 @@
 const initialState = {
-  user: null,
-  isAuthenticated: false,
-  loading: false,
-  error: null,
-  token: localStorage.getItem('token') || null,
+    isAuthenticated: false,
+    user: null,
+    token: null,
+    error: null,
+    loading: false, // Thêm trạng thái loading
 };
 
 const authReducer = (state = initialState, action) => {
@@ -30,19 +30,24 @@ const authReducer = (state = initialState, action) => {
               token: null,
               isAuthenticated: false,
           };
-      case 'REGISTER_SUCCESS':
-          return {
+          case 'REGISTER_SUCCESS':
+            return {
               ...state,
-              user: action.payload,
               isAuthenticated: true,
+              user: action.payload.user,
+              token: action.payload.token,
+              error: null,
               loading: false,
-          };
-      case 'REGISTER_FAIL':
-          return {
+            };
+          case 'REGISTER_FAIL':
+            return {
               ...state,
+              isAuthenticated: false,
+              user: null,
+              token: null,
               error: action.payload,
               loading: false,
-          };
+            };
       default:
           return state;
   }
